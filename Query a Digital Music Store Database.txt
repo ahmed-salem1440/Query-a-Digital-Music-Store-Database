@@ -1,0 +1,28 @@
+
+1
+SELECT (Customer.FirstName || " " || Customer.LastName) AS "Customer Name" , SUM(Invoice.total) As "total"
+FROM Invoice 
+INNER JOIN Customer ON Invoice.CustomerId = Customer.CustomerId
+GROUP BY "Customer Name"
+ORDER BY "total" DESC
+LIMIT 10 ;
+2
+SELECT (Employee.FirstName || " " || Employee.LastName) AS "Employee Name" ,
+COUNT (Customer.CustomerId) AS "Customer Number"
+FROM Employee
+JOIN Customer ON Employee.EmployeeId = Customer.SupportRepId
+GROUP BY "Employee Name"
+
+3
+SELECT Artist.Name , count(Album.ArtistId) AS "Number of Albums per Artist"
+FROM Album
+JOIN Artist on Album.ArtistID = Artist.ArtistId
+GROUP BY Artist.Name 
+ORDER BY "Number of Albums per Artist" DESC
+LIMIT 10;
+4
+SELECT MediaType.Name , COUNT(Track.MediaTypeId) AS "Total Number of Types"
+FROM Track
+Join MediaType ON Track.MediaTypeId = MediaType.MediaTypeId
+GROUP BY MediaType.Name 
+ORDER BY "Total Number of Types" DESC
